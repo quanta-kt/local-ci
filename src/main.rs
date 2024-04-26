@@ -159,11 +159,11 @@ async fn main() -> octocrab::Result<()> {
         .personal_token(config.token.clone())
         .build()?;
 
-    let repo = ensure_repo(&config);
-
     let mut store = Store::load();
 
     loop {
+        let repo = ensure_repo(&config);
+
         test_prs(&github, &repo, &config, &mut store).await?;
         sleep(Duration::from_secs(60)).await;
     }

@@ -120,7 +120,7 @@ async fn test_prs(
     let pulls = github
         .pulls(&config.username, &config.repo_name)
         .list()
-        .per_page(20)
+        .per_page(50)
         .send()
         .await?;
 
